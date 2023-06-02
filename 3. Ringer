@@ -1,13 +1,9 @@
 module top_module (
-    input too_cold,
-    input too_hot,
-    input mode,
-    input fan_on,
-    output heater,
-    output aircon,
-    output fan
-); 
-	assign heater = mode && too_cold;
-    assign aircon = (~mode) && too_hot;
-    assign fan    = aircon || heater || fan_on;
+    input ring,
+    input vibrate_mode,
+    output ringer,       // Make sound
+    output motor         // Vibrate
+);
+    assign motor  = vibrate_mode && ring;
+    assign ringer = (~vibrate_mode) && ring;
 endmodule
